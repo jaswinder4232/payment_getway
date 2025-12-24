@@ -79,8 +79,12 @@ export default function Home() {
           email: '',
           contact: '',
         },
+        method: {
+          emi: false,
+          paylater: false,
+        },
         theme: {
-          color: '#667eea',
+          color: '#ff6600ff',
         },
         modal: {
           ondismiss: function () {

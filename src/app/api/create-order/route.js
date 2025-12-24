@@ -25,6 +25,7 @@ export async function POST(request) {
             amount: order.amount,
             currency: order.currency,
             keyId: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+
         });
     } catch (error) {
         console.error('Error creating Razorpay order:', error);
