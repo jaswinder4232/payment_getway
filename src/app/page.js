@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Script from 'next/script';
+import NotificationButton from '../../components/NotificationButton';
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -219,6 +220,9 @@ export default function Home() {
               Secure payment powered by Razorpay
             </p>
           </div>
+
+          {/* Notification Button */}
+          <NotificationButton />
         </div>
       </div>
     </>
