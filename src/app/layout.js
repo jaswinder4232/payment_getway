@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { CartProvider } from "../../context/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,14 +13,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Premium Subscription App",
-  description: "Unlock all premium features with secure Razorpay payment",
+  title: "StyleHub - Premium Clothing Store",
+  description: "Shop the latest trends in fashion with secure Razorpay payment",
   manifest: "/manifest.json",
   themeColor: "#667eea",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Premium App",
+    title: "StyleHub",
   },
 };
 
@@ -29,7 +30,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
