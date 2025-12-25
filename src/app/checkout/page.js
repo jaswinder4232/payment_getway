@@ -72,6 +72,21 @@ export default function CheckoutPage() {
                         const verifyData = await verifyResponse.json();
 
                         if (verifyData.success) {
+                            // Save order to localStorage
+                            const order = {
+                                id: response.razorpay_payment_id.slice(-8),
+                                date: new Date().toISOString(),
+                                items: cart,
+                                total: getCartTotal(),
+                                status: 'Processing',
+                                paymentId: response.razorpay_payment_id,
+                            };
+
+                            const savedOrders = localStorage.getItem('orders');
+                            const orders = savedOrders ? JSON.parse(savedOrders) : [];
+                            orders.unshift(order);
+                            localStorage.setItem('orders', JSON.stringify(orders));
+
                             // Clear cart and redirect to success
                             clearCart();
                             window.location.href = `/success?payment_id=${response.razorpay_payment_id}&items=${cart.length}`;
